@@ -1,0 +1,52 @@
+﻿@model IEnumerable<reportWebApp.Models.report>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Info)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.time)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.task.Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Info)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.time)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.task.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.reportId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.reportId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.reportId })
+        </td>
+    </tr>
+}
+
+</table>

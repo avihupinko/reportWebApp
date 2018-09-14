@@ -1,0 +1,43 @@
+﻿@model reportWebApp.Models.projectTasks
+
+@{
+    ViewBag.Title = Model.Pr.Name + " tasks"  ;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Html.DisplayFor(modelItem => Model.Pr.Name)'s tasks</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", new { id = Model.Pr.projectId }) |
+    @Html.ActionLink(linkText: "Go Back To Projects Page", actionName: "clientProjects", controllerName: "projects", 
+    routeValues: new { id = Model.Pr.ClientId }, htmlAttributes: null)
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Task
+        </th>
+        <th>
+            Info
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Ts)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Info)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.taskId }) |
+            @Html.ActionLink(linkText: "Select Task", actionName: "taskReports",
+                            controllerName: "reports" ,routeValues: new { id=item.taskId}, htmlAttributes: null)
+        </td>
+    </tr>
+    }
+
+</table>

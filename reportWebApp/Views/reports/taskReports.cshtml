@@ -1,0 +1,50 @@
+﻿@model reportWebApp.Models.taskReports
+
+@{
+    ViewBag.Title = "Task Reports";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Html.DisplayFor(modelItem => Model.Ta.Name) - Task Reports</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", new { id = Model.Ta.taskId }) |
+    @Html.ActionLink(linkText: "Go Back To Tasks Page", actionName: "projectTasks", controllerName: "tasks",
+    routeValues: new { id = Model.Ta.projectId }, htmlAttributes: null)
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Report Date
+        </th>
+        <th>
+            Info
+        </th>
+        <th>
+            Work Time
+        </th>
+        
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Re)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Info)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.time)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.reportId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.reportId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.reportId })
+            </td>
+        </tr>
+    }
+
+</table>

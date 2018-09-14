@@ -1,0 +1,34 @@
+﻿@model IEnumerable<reportWebApp.Models.Client>
+
+@{
+    ViewBag.Title = "Clients";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Clients</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.clientId }) |
+            @Html.ActionLink(linkText: "Select Client", actionName: "clientProjects", 
+                                controllerName: "Projects" ,routeValues: new { id=item.clientId }, htmlAttributes: null) 
+        </td>
+    </tr>
+}
+
+</table>

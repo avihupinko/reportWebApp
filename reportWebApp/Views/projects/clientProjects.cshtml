@@ -1,0 +1,42 @@
+﻿@model reportWebApp.Models.clientProjects
+
+@{
+    ViewBag.Title = Model.Cl.Name + " projects";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Html.DisplayFor(modelItem => Model.Cl.Name)'s Projects</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", new { id = Model.Cl.clientId }) | 
+    @Html.ActionLink(linkText: "Go Back To Clients Page", actionName: "Index", controllerName: "clients" )
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Project Name
+        </th>
+        <th>
+            created At
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Pr)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.createdAt)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.projectId }) |
+                @Html.ActionLink(linkText: "Select Project", actionName: "projectTasks",
+                                controllerName: "tasks" ,routeValues: new { id=item.projectId }, htmlAttributes: null)
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,45 @@
+﻿@model IEnumerable<reportWebApp.Models.timeSpentPerClient>
+
+@{
+    ViewBag.Title = "Clients Work Summary";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Clients Work Summary Per Project</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.clientName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.projectName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.spentTime)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.clientName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.projectName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.spentTime)
+        </td>
+        <td>
+            @Html.ActionLink(linkText: "Show Client Projects", actionName: "clientProjects",
+                                controllerName: "Projects" ,routeValues: new { id=item.clientId }, htmlAttributes: null) | 
+            @Html.ActionLink(linkText: "Show Project Tasks", actionName: "projectTasks",
+                                controllerName: "Tasks" ,routeValues: new { id=item.projectId }, htmlAttributes: null)
+        </td>
+    </tr>
+}
+
+</table>
