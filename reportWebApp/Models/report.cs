@@ -11,11 +11,14 @@ namespace reportWebApp.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class report
     {
         public int reportId { get; set; }
         public int taskId { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public System.DateTime date { get; set; }
         public string Info { get; set; }
         public double time { get; set; }

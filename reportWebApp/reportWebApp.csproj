@@ -249,6 +249,7 @@
     <Content Include="Models\AzureDB.edmx.diagram">
       <DependentUpon>AzureDB.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\reportWebApp20180914040616 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
